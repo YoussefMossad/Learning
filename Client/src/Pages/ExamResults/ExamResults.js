@@ -19,9 +19,9 @@ function ExamResults({ language, isDarkMode, Role, userId }) {
                 console.log("Role: ",Role)
                 let response;
                 if (Role === 'student') {
-                    response = await axios.get(`http://localhost:4001/api/student/${userId}/courses`);
+                    response = await axios.get(`https://learning-flax-omega.vercel.app/api/student/${userId}/courses`);
                 } else if (Role === 'instructor') {
-                    response = await axios.get(`http://localhost:4001/api/instructor/${userId}/courses`);
+                    response = await axios.get(`https://learning-flax-omega.vercel.app/api/instructor/${userId}/courses`);
                 }
                 console.log('API response:', response.data); // Log the response
                 if (Array.isArray(response.data)) {
@@ -38,7 +38,7 @@ function ExamResults({ language, isDarkMode, Role, userId }) {
 
     const handleCourseSelect = (courseId) => {
         setSelectedCourse(courseId);
-        axios.get(`http://localhost:4001/api/exams/${courseId}`)
+        axios.get(`https://learning-flax-omega.vercel.app/api/exams/${courseId}`)
             .then(response => {
                 setExams(response.data);
                 setSelectedExam('');
@@ -51,7 +51,7 @@ function ExamResults({ language, isDarkMode, Role, userId }) {
 
     const handleExamSelect = (examId) => {
         setSelectedExam(examId);
-        axios.get(`http://localhost:4001/api/exam-results/${examId}`)
+        axios.get(`https://learning-flax-omega.vercel.app/api/exam-results/${examId}`)
             .then(response => {
                 setStudents(response.data);
             })
