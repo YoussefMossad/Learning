@@ -14,7 +14,7 @@ export default function Chapters({ isDarkMode }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:4001/instructor-courses");
+                const response = await axios.get("https://learning-flax-omega.vercel.app/instructor-courses");
                 setAllCourses(response.data);
             } catch (error) {
                 console.log("Error fetching data:", error);
