@@ -52,7 +52,7 @@ const verifyUser = (req, res, next) => {
     });
 };
 // Authorization
-app.get('/api', verifyUser, (req, res) => {
+app.get('/', verifyUser, (req, res) => {
     const { firstName, role, id } = req.user;
     return res.json({ Status: "Success", firstName, role, id });
 });
