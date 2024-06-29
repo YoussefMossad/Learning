@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "server.js",
+        "methods":["GET","POST","PUT","PATCH","DELETE","OPTIONS"]
+      }
+    ],
+    "env": {
+      "DB_HOST": "bm8tvioh4lqlmcpsh44j-mysql.services.clever-cloud.com"
+      ,"DB_USER":"ulq9b1tew4cq1xgl"
+      ,"DB_PASSWORD":"o0fFMHZX4QohlKpkBdSX"
+      ,"DB_NAME":"bm8tvioh4lqlmcpsh44j"
+    }
+  }
+  
