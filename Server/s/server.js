@@ -17,7 +17,7 @@ const io = new Server(server, {
     cors: {
         origin: '*',  // Allow all origins for CORS
         methods: ['GET', 'POST']
-        credentials: true
+      
     }
 });
 
@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cors({
     origin: ["*"],
     methods: ["POST", "GET", 'DELETE', 'PUT'],
-    credentials: true
+    
 }));
 app.use(cookieParser());
 app.use(bodyParser.json())
