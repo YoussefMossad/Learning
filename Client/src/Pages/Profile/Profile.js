@@ -13,7 +13,7 @@ const Profile = ({ isDarkMode, language, userId }) => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get(`http://localhost:4001/user/${userId}`);
+      const response = await axios.get(`https://learning-flax-omega.vercel.app/user/${userId}`);
       setUserData(response.data);
       console.log(response.data);
     } catch (err) {
@@ -59,7 +59,7 @@ const Profile = ({ isDarkMode, language, userId }) => {
     }
 
     try {
-      const response = await axios.put('http://localhost:4001/user/update', formData, {
+      const response = await axios.put('https://learning-flax-omega.vercel.app/user/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
