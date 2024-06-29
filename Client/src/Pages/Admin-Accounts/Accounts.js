@@ -65,7 +65,7 @@ const Accounts = ({ language, isDarkMode,relative,fixed }) => {
     dataToUpdate.userID = formData.userID;
     let response;
     if (selectedOption === "update"){
-      axios.post(`http://localhost:4001/update-account`, dataToUpdate)
+      axios.post(`https://learning-flax-omega.vercel.app/update-account`, dataToUpdate)
           .then(res => {
             if (res.data.Status === "Success") {
               alert("Success");
@@ -80,7 +80,7 @@ const Accounts = ({ language, isDarkMode,relative,fixed }) => {
           });
       console.log('Submitted data to update:', dataToUpdate);
     }else {
-      axios.post(`http://localhost:4001/${selectedOption}-account`, { ...formData, departmentName })
+      axios.post(`https://learning-flax-omega.vercel.app/${selectedOption}-account`, { ...formData, departmentName })
           .then(res => {
             if (res.data.Status === "Success") {
               alert("Success");
