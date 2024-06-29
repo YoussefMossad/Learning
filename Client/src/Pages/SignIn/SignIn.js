@@ -8,9 +8,6 @@ const SignIn = ({ language, isDarkMode }) => {
         email: '',
         password: '',
     });
-  const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://learning-flax-omega.vercel.app/signIn', true);
-    xhr.withCredentials = true;
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
