@@ -12,9 +12,6 @@ function App() {
   const [language, setLanguage] = useState(
     localStorage.getItem('language') || 'En'
   );
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://learning-flax-omega.vercel.app/signIn', true);
-    xhr.withCredentials = true;
 
 
   const [isDarkMode, setIsDarkMode] = useState(
@@ -51,7 +48,7 @@ function App() {
 
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get('https://learning-flax-omega.vercel.app')
+    axios.get('https://learning-flax-omega.vercel.app/api')
         .then(res => {
           console.log("Server response:", res.data); // Log the server response
           if (res.data.Status === "Success") {
