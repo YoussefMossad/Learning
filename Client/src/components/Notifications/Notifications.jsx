@@ -4,7 +4,7 @@ import axios from 'axios';
 import { MdNotificationsActive } from "react-icons/md";
 import NotificationPopover from './NotificationPopover';
 
-const socket = io('http://localhost:4001');
+const socket = io('https://learning-flax-omega.vercel.app');
 
 function Notifications({ userId }) {
     const [notifications, setNotifications] = useState([]);
