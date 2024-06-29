@@ -12,7 +12,9 @@ function App() {
   const [language, setLanguage] = useState(
     localStorage.getItem('language') || 'En'
   );
-  
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://learning-flax-omega.vercel.app/signIn', true);
+    xhr.withCredentials = true;
 
 
   const [isDarkMode, setIsDarkMode] = useState(
