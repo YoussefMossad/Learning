@@ -7,7 +7,7 @@
         "dest": "server.js",
         "methods":["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
         "headers":{
-            "Access-Control-Allow-Origin":"*" 
+            "Access-Control-Allow-Origin":"https://learning-wwd7.vercel.app" 
       }
       }
     ],
