@@ -17,6 +17,7 @@ const io = new Server(server, {
     cors: {
         origin: '*',  // Allow all origins for CORS
         methods: ['GET', 'POST']
+        credentials: true
     }
 });
 
