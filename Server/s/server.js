@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-// --------------------------------------------------------------------- Middleware to authenticate use
+// -------------------------------------------------------------------- Middleware to authenticate use
 // const verifyUser = (req, res, next) => {
 //     const token = req.cookies.token; // Corrected to req.cookies
 //     if (!token) return res.json({ Error: "You are not authenticated" });
