@@ -58,7 +58,7 @@ app.get('/', verifyUser, (req, res) => {
 });
 
 // ---------------------------------------------------------------------- SIGNE IN
-app.get('https://learning-flax-omega.vercel.app/signIn', (req, res) => {
+app.POST('https://learning-flax-omega.vercel.app/signIn', (req, res) => {
     const { email, password } = req.body;
 
     conn.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
