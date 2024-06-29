@@ -52,7 +52,7 @@ const verifyUser = (req, res, next) => {
     });
 };
 // Authorization
-app.get('/', verifyUser, (req, res) => {
+app.get('https://learning-flax-omega.vercel.app', verifyUser, (req, res) => {
     const { firstName, role, id } = req.user;
     return res.json({ Status: "Success", firstName, role, id });
 });
