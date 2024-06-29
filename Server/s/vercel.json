@@ -9,6 +9,7 @@
         "headers":{
             "Access-Control-Allow-Origin":"*" 
       }
+      }
     ],
     "env": {
       "DB_HOST": "bm8tvioh4lqlmcpsh44j-mysql.services.clever-cloud.com"
