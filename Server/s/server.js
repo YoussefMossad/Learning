@@ -39,23 +39,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // ---------------------------------------------------------------------- Middleware to authenticate user
-const verifyUser = (req, res, next) => {
-    const token = req.cookies.token; // Corrected to req.cookies
-    if (!token) return res.json({ Error: "You are not authenticated" });
-    jwt.verify(token, jwtSecretKey, (err, decoded) => {
-        if (err) {
-            return res.json({ Error: "Token is not valid" });
-        } else {
-            req.user = decoded; // Attach decoded payload to req.user
-            next();
-        }
-    });
-};
-// Authorization
-app.get('/', verifyUser, (req, res) => {
-    const { firstName, role, id } = req.user;
-    return res.json({ Status: "Success", firstName, role, id });
-});
+// const verifyUser = (req, res, next) => {
+//     const token = req.cookies.token; // Corrected to req.cookies
+//     if (!token) return res.json({ Error: "You are not authenticated" });
+//     jwt.verify(token, jwtSecretKey, (err, decoded) => {
+//         if (err) {
+//             return res.json({ Error: "Token is not valid" });
+//         } else {
+//             req.user = decoded; // Attach decoded payload to req.user
+//             next();
+//         }
+//     });
+// };
+// // Authorization
+// app.get('/', verifyUser, (req, res) => {
+//     const { firstName, role, id } = req.user;
+//     return res.json({ Status: "Success", firstName, role, id });
+// });
 
 // ---------------------------------------------------------------------- SIGNE IN
 app.post('/signIn', (req, res) => {
