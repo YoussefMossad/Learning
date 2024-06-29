@@ -11,7 +11,7 @@ const Assignments = ({ isDarkMode, language, userRole, userId }) => {
   const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:4001/api/student/${userId}/courses`)
+    axios.get(`https://learning-flax-omega.vercel.app/api/student/${userId}/courses`)
         .then(response => setCourses(response.data))
         .catch(error => console.error('Error fetching courses:', error));
   }, [userRole, userId]);
@@ -21,7 +21,7 @@ const Assignments = ({ isDarkMode, language, userRole, userId }) => {
   useEffect(() => {
     if (selectedCourse) {
       // Fetch assignments for the selected course from backend
-      axios.get(`http://localhost:4001/assignments/${selectedCourse}`)
+      axios.get(`https://learning-flax-omega.vercel.app/assignments/${selectedCourse}`)
           .then(response => setAssignments(response.data))
           .catch(error => console.error('Error fetching assignments:', error));
     }
@@ -55,7 +55,7 @@ const Assignments = ({ isDarkMode, language, userRole, userId }) => {
     formData.append('assignmentId', selectedAssignment.assignment_id);
     formData.append('instructorCourseId', selectedAssignment.instructor_course_id);
 
-    axios.post('http://localhost:4001/upload-student-assignment', formData)
+    axios.post('https://learning-flax-omega.vercel.app/upload-student-assignment', formData)
         .then(response => {
           console.log('Student Assignment Uploaded:', response.data);
           alert(language === 'En' ? 'Assignment uploaded successfully!' : 'تم رفع الواجب بنجاح!');
