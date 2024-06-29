@@ -27,7 +27,7 @@ app.options("",cors(cors));
 app.use(express.json());
 // app.use('/api',route);
 app.use(cors({
-    origin: ["http://localhost:3000","https://platfrom-1-k5jz.vercel.app/","*"],
+    origin: ["https://learning-wwd7.vercel.app"],
     methods: ["POST", "GET", 'DELETE', 'PUT'],
     credentials: true
 }));
