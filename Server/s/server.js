@@ -56,7 +56,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     const { firstName, role, id } = req.user;
 //     return res.json({ Status: "Success", firstName, role, id });
 // });
-
 // ---------------------------------------------------------------------- SIGNE IN
 app.post('/signIn', (req, res) => {
     const { email, password } = req.body;
