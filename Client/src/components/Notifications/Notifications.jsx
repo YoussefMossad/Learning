@@ -14,7 +14,7 @@ function Notifications({ userId }) {
 
     useEffect(() => {
         // Fetch existing notifications
-        axios.get(`http://localhost:4001/api/notifications/${userId}`)
+        axios.get(`https://learning-flax-omega.vercel.app/api/notifications/${userId}`)
             .then(response => {
                 setNotifications(response.data);
             })
@@ -23,7 +23,7 @@ function Notifications({ userId }) {
             });
 
         // Fetch unread notifications
-        axios.get(`http://localhost:4001/api/unread-notifications/${userId}`)
+        axios.get(`https://learning-flax-omega.vercel.app/api/unread-notifications/${userId}`)
             .then(response => {
                 setUnreadNotifications(response.data);
             })
@@ -58,7 +58,7 @@ function Notifications({ userId }) {
     const handleClickOutside = (event) => {
         if (popoverRef.current && !popoverRef.current.contains(event.target)) {
             setShowPopover(false);
-            axios.post(`http://localhost:4001/api/mark-notifications-read/${userId}`)
+            axios.post(`https://learning-flax-omega.vercel.app/api/mark-notifications-read/${userId}`)
                 .then(() => {
                     setUnreadNotifications([{ unread: 0 }]);
                 })
