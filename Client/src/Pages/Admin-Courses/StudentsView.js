@@ -12,7 +12,7 @@ const InstructorsView = ({ language }) => {
 
     const fetchInstructorsCourses = async () => {
         try {
-            const response = await axios.get('http://localhost:4001/api/students-enrollments');
+            const response = await axios.get('https://learning-flax-omega.vercel.app/api/students-enrollments');
             setStudentsEnrollments(response.data);
         } catch (err) {
             console.error('Error fetching enrollments data:', err);
@@ -23,7 +23,7 @@ const InstructorsView = ({ language }) => {
     useEffect(() => {
         fetchInstructorsCourses();
 
-        axios.get('http://localhost:4001/api/instructors-departments-courses')
+        axios.get('https://learning-flax-omega.vercel.app/api/instructors-departments-courses')
             .then(response => {
                 setInstructorsCourses(response.data);
             })
@@ -32,7 +32,7 @@ const InstructorsView = ({ language }) => {
                 toast.error(language === 'En' ? 'Error fetching departments-courses data' : 'خطأ في جلب بيانات الأقسام والمدربين');
             });
 
-        axios.get('http://localhost:4001/api/students')
+        axios.get('https://learning-flax-omega.vercel.app/api/students')
             .then(response => {
                 setStudents(response.data);
             })
@@ -47,7 +47,7 @@ const InstructorsView = ({ language }) => {
 
     const handleAdd = async () => {
         try {
-            const response = await axios.post('http://localhost:4001/api/students-enrollments', {
+            const response = await axios.post('https://learning-flax-omega.vercel.app/api/students-enrollments', {
                 student_id: selectedStudent,
                 instructor_course_ids: newInstructorCourse
             });
@@ -70,7 +70,7 @@ const InstructorsView = ({ language }) => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:4001/api/students-enrollments/${id}`);
+            await axios.delete(`https://learning-flax-omega.vercel.app/api/students-enrollments/${id}`);
             fetchInstructorsCourses();
             toast.success(language === 'En' ? 'Deleted successfully!' : 'تم الحذف بنجاح!');
         } catch (error) {
