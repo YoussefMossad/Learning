@@ -16,7 +16,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4001/api/courses/${courseCode}/chapters`);
+                const response = await axios.get(`https://learning-flax-omega.vercel.app/api/courses/${courseCode}/chapters`);
                 console.log('API response:', response.data); // Log the response
                 setChapters(response.data);
             } catch (error) {
@@ -37,7 +37,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
         formData.append('file', file);
 
         try {
-            await axios.post(`http://localhost:4001/api/courses/${courseCode}/chapters`, formData, {
+            await axios.post(`https://learning-flax-omega.vercel.app/api/courses/${courseCode}/chapters`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                     // 'Accept-Charset': 'utf-8'
@@ -46,7 +46,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
             alert('Chapter uploaded successfully');
             setFile(null); // Clear file input
             // Refresh the chapters list
-            const response = await axios.get(`http://localhost:4001/api/courses/${courseCode}/chapters`);
+            const response = await axios.get(`https://learning-flax-omega.vercel.app/api/courses/${courseCode}/chapters`);
             setChapters(response.data);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
@@ -59,7 +59,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
 
     const handleDownload = async (chapterId, fileName) => {
         try {
-            const response = await axios.get(`http://localhost:4001/api/chapters/${chapterId}/download`, {
+            const response = await axios.get(`https://learning-flax-omega.vercel.app/api/chapters/${chapterId}/download`, {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -76,10 +76,10 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
 
     const handleDelete = async (chapterId) => {
         try {
-            await axios.delete(`http://localhost:4001/api/chapters/${chapterId}`);
+            await axios.delete(`https://learning-flax-omega.vercel.app/api/chapters/${chapterId}`);
             alert('Chapter deleted successfully');
             // Refresh the chapters list
-            const response = await axios.get(`http://localhost:4001/api/courses/${courseCode}/chapters`);
+            const response = await axios.get(`https://learning-flax-omega.vercel.app/api/courses/${courseCode}/chapters`);
             setChapters(response.data);
         } catch (error) {
             console.error('Error deleting chapter', error);
@@ -92,7 +92,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
         formData.append('file', file);
 
         try {
-            await axios.put(`http://localhost:4001/api/chapters/${chapterId}`, formData, {
+            await axios.put(`https://learning-flax-omega.vercel.app/api/chapters/${chapterId}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -100,7 +100,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
             alert('Chapter modified successfully');
             setFile(null); // Clear file input
             // Refresh the chapters list
-            const response = await axios.get(`http://localhost:4001/api/courses/${courseCode}/chapters`);
+            const response = await axios.get(`https://learning-flax-omega.vercel.app/api/courses/${courseCode}/chapters`);
             setChapters(response.data);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
@@ -113,7 +113,7 @@ const ChapterUpload = ({ isDarkMode, Role }) => {
 
     const handleView = async (chapterId) => {
         try {
-            const response = await axios.get(`http://localhost:4001/api/chapters/${chapterId}/view`, {
+            const response = await axios.get(`https://learning-flax-omega.vercel.app/api/chapters/${chapterId}/view`, {
                 responseType: 'blob',
             });
             const contentType = response.headers['content-type'];
