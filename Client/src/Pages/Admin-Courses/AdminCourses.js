@@ -13,7 +13,7 @@ const AdminCourses = ({ isDarkMode, language }) => {
 
     const fetchDepartments = async () => {
         try {
-            const response = await axios.get('http://localhost:4001/api/departments');
+            const response = await axios.get('https://learning-flax-omega.vercel.app/api/departments');
             setDepartments(response.data);
         }catch (err) {
             console.log("Error fetching departments data: ", err);
