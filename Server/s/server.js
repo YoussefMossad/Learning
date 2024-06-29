@@ -15,7 +15,7 @@ const server = require('http').createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
     cors: {
-        origin: '*',  // Allow all origins for CORS
+        origin: 'https://learning-wwd7.vercel.app',  // Allow all origins for CORS
         methods: ['GET', 'POST']
     }
 });
