@@ -21,7 +21,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
 
   useEffect(() => {
     // Fetch courses when the component mounts
-    axios.get(`http://localhost:4001/api/courses/${userId}`)
+    axios.get(`https://learning-flax-omega.vercel.app/api/courses/${userId}`)
         .then(response => {
           setCourses(response.data);
           console.log(response.data)
@@ -73,7 +73,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
 
     // // Save the question and answers to the database
     // try {
-    //   const response = await axios.post('http://localhost:4001/api/questions', {
+    //   const response = await axios.post('https://learning-flax-omega.vercel.app/api/questions', {
     //     exam_id: 1, // Replace with actual exam_id
     //     question_text: newQuestion,
     //     points: 1, // Replace with actual points value
@@ -82,7 +82,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
     //
     //   if (questionType === 'MCQ') {
     //     for (let i = 0; i < options.length; i++) {
-    //       await axios.post('http://localhost:4001/api/answers', {
+    //       await axios.post('https://learning-flax-omega.vercel.app/api/answers', {
     //         question_id,
     //         answer_text: options[i].value,
     //         is_correct: i === correctAnswerIndex,
@@ -119,7 +119,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
 
     // Save the exam to the database
     try {
-      const response = await axios.post('http://localhost:4001/api/exams', {
+      const response = await axios.post('https://learning-flax-omega.vercel.app/api/exams', {
         exam_name: examName,
         duration: duration,
         start_at: startAtUTC
@@ -127,19 +127,19 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
       const exam_id = response.data.exam_id;
 
       // Associate exam with course
-      // await axios.post('http://localhost:4001/api/associateExam', {
+      // await axios.post('https://learning-flax-omega.vercel.app/api/associateExam', {
       //   exam_id,
       //   course_code: selectedCourse,
       // });
       console.log('MakeExam ID / course_code / instructor_id', exam_id, selectedCourse, userId);
       // Associate exam with instructor's course
-      await axios.post('http://localhost:4001/api/instructorsCoursesExams', {
+      await axios.post('https://learning-flax-omega.vercel.app/api/instructorsCoursesExams', {
         course_code: selectedCourse,
         instructor_id: userId,
         exam_id: exam_id
       });
 
-      await axios.post('http://localhost:4001/api/enrollmentsExams', {
+      await axios.post('https://learning-flax-omega.vercel.app/api/enrollmentsExams', {
         course_code: selectedCourse,
         instructor_id: userId,
         exam_id: exam_id
@@ -147,7 +147,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
 
       // Save each question and its options to the database
       for (let question of questions) {
-        const questionResponse = await axios.post('http://localhost:4001/api/questions', {
+        const questionResponse = await axios.post('https://learning-flax-omega.vercel.app/api/questions', {
           exam_id,
           question_text: question.question,
           points: points,
@@ -156,7 +156,7 @@ const MakeExam = ({ language, isDarkMode, userId }) => {
 
         if (question.type === 'MCQ') {
           for (let i = 0; i < question.options.length; i++) {
-            await axios.post('http://localhost:4001/api/answers', {
+            await axios.post('https://learning-flax-omega.vercel.app/api/answers', {
               question_id,
               answer_text: question.options[i],
               is_correct: i === question.correctAnswer,
