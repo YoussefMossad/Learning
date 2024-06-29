@@ -12,7 +12,7 @@ const UploadAssignment = ({ isDarkMode, language, userId }) => {
 
   useEffect(() => {
     // Fetch courses from backend on component mount
-    axios.get(`http://localhost:4001/api/instructor/${userId}/courses`)
+    axios.get(`https://learning-flax-omega.vercel.app/api/instructor/${userId}/courses`)
         .then(response => setCourses(response.data))
         .catch(error => console.error('Error fetching courses:', error));
   }, []);
