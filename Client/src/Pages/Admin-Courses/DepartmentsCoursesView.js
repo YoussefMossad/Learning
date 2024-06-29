@@ -18,7 +18,7 @@ const DepartmentsCoursesView = ({ language, departments }) => {
 
     const fetchDepartmentsCourses = async () => {
         try {
-            const response = await axios.get('http://localhost:4001/api/departments-courses');
+            const response = await axios.get('https://learning-flax-omega.vercel.app/api/departments-courses');
             setDepartmentsCourses(response.data);
         } catch (err) {
             console.log('Error fetching departments-courses data: ', err);
@@ -26,7 +26,7 @@ const DepartmentsCoursesView = ({ language, departments }) => {
     };
 
     useEffect(() => {
-        axios.get('http://localhost:4001/api/courses').then(response => {
+        axios.get('https://learning-flax-omega.vercel.app/api/courses').then(response => {
             setCourses(response.data);
         });
         fetchDepartmentsCourses();
@@ -37,7 +37,7 @@ const DepartmentsCoursesView = ({ language, departments }) => {
 
     const handleAdd = async () => {
         try {
-            await axios.post('http://localhost:4001/api/departments-courses', {
+            await axios.post('https://learning-flax-omega.vercel.app/api/departments-courses', {
                 department_id: newDepartment,
                 course_id: newCourse,
                 level: newLevel,
@@ -63,7 +63,7 @@ const DepartmentsCoursesView = ({ language, departments }) => {
 
     const handleSaveUpdate = async () => {
         try {
-            await axios.put(`http://localhost:4001/api/departments-courses/${editingCourse}`, {
+            await axios.put(`https://learning-flax-omega.vercel.app/api/departments-courses/${editingCourse}`, {
                 department_id: selectedDepartment || undefined,
                 course_id: selectedCourse || undefined,
                 level: selectedLevel || undefined,
@@ -80,7 +80,7 @@ const DepartmentsCoursesView = ({ language, departments }) => {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:4001/api/departments-courses/${id}`)
+        axios.delete(`https://learning-flax-omega.vercel.app/api/departments-courses/${id}`)
             .then(res => {
                 if (res.data.success) {
                     fetchDepartmentsCourses();
