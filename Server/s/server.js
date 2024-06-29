@@ -52,13 +52,13 @@ const verifyUser = (req, res, next) => {
     });
 };
 // Authorization
-app.get('https://learning-flax-omega.vercel.app', verifyUser, (req, res) => {
+app.get('https://learning-wwd7.vercel.app', verifyUser, (req, res) => {
     const { firstName, role, id } = req.user;
     return res.json({ Status: "Success", firstName, role, id });
 });
 
 // ---------------------------------------------------------------------- SIGNE IN
-app.post('https://learning-flax-omega.vercel.app/signIn', (req, res) => {
+app.post('https://learning-wwd7.vercel.app/signIn', (req, res) => {
     const { email, password } = req.body;
 
     conn.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
